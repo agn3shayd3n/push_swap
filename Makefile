@@ -1,5 +1,6 @@
 NAME = push_swap
 
+# Archivos fuente
 SRCS = \
 	srcs/utils/error_handling.c \
 	srcs/utils/split.c \
@@ -15,9 +16,13 @@ SRCS = \
 	srcs/node_commands/rotate.c \
 	srcs/node_commands/sort_three.c
 
-OBJS = ${SRCS:.c=.o}
+# Carpeta para objetos
+OBJ_DIR = obj
 
-CC = gcc
+# Lista de archivos .o en obj/
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -Isrcs
 RM = rm -f
 
@@ -25,20 +30,25 @@ GREEN = \033[0;32m
 YELLOW = \033[0;33m
 RESET = \033[0m
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJS}
-	@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
-	@${RM} ${OBJS}
-	@echo "${GREEN}PUSH_SWAP COMPILED ✧*｡٩(ˊᗜˋ*)و✧*｡ ${RESET}"
+# Compilación final
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(GREEN)PUSH_SWAP COMPILED ✧*｡٩(ˊᗜˋ*)و✧*｡$(RESET)"
+
+# Regla para compilar cada .o dentro de obj/
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@${RM} ${OBJS}
-	@echo "${YELLOW}CLEANED OBJECT FILES ╰( ´・ω・)つ──☆ *:・ﾟ✧ ${RESET}"
+	@$(RM) -r $(OBJ_DIR)
+	@echo "$(YELLOW)CLEANED OBJECT FILES ╰( ´・ω・)つ──☆ *:・ﾟ✧$(RESET)"
 
 fclean: clean
-	@${RM} ${NAME}
-	@echo "${YELLOW}CLEANED EXECUTABLE °•°٩(◕‿◕｡)°•° ${RESET}"
+	@$(RM) $(NAME)
+	@echo "$(YELLOW)CLEANED EXECUTABLE °•°٩(◕‿◕｡)°•°$(RESET)"
 
 re: fclean all
 
