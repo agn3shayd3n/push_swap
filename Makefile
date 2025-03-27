@@ -1,6 +1,5 @@
 NAME = push_swap
 
-# Archivos fuente
 SRCS = \
 	srcs/utils/error_handling.c \
 	srcs/utils/split.c \
@@ -16,10 +15,8 @@ SRCS = \
 	srcs/node_commands/rotate.c \
 	srcs/node_commands/sort_three.c
 
-# Carpeta para objetos
 OBJ_DIR = obj
 
-# Lista de archivos .o en obj/
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 CC = cc
@@ -32,12 +29,10 @@ RESET = \033[0m
 
 all: $(NAME)
 
-# Compilación final
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)PUSH_SWAP COMPILED ✧*｡٩(ˊᗜˋ*)و✧*｡$(RESET)"
 
-# Regla para compilar cada .o dentro de obj/
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
