@@ -79,6 +79,5 @@ void			rrr(t_stack_node **a, t_stack_node **b, bool print);
 void			sort_three(t_stack_node **stack);
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 void			turk_algorithm(t_stack_node **a, t_stack_node **b);
-int				ft_min(int a, int b);
 
 #endif
