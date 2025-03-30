@@ -101,23 +101,23 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	return (NULL);
 }
 
-void	ready2push(t_stack_node **stack, t_stack_node *top, char name)
+void	ready2push(t_stack_node **node, t_stack_node *targt, char stck)
 {
-	while (*stack != top)
+	while (*node != targt)
 	{
-		if (name == 'a')
+		if (stck == 'a')
 		{
-			if (top->above_median)
-				ra(stack, false);
+			if (targt->above_median)
+				ra(node, false);
 			else
-				rra(stack, false);
+				rra(node, false);
 		}
-		else if (name == 'b')
+		else if (stck == 'b')
 		{
-			if (top->above_median)
-				rb(stack, false);
+			if (targt->above_median)
+				rb(node, false);
 			else
-				rrb(stack, false);
+				rrb(node, false);
 		}
 	}
 }

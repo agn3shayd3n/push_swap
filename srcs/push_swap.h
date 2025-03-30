@@ -42,14 +42,14 @@ void			free_errors(t_stack_node **a);
 char			**ft_split(char *s, char c);
 void			start_stack_a(t_stack_node **stack_a, char **argv);
 
-/* initiation of nodes */
+/* node order */
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 void			current_index(t_stack_node *stack);
 void			is_cheapest(t_stack_node *stack);
 void			init_nodes_a(t_stack_node *a, t_stack_node *b);
 void			init_nodes_b(t_stack_node *a, t_stack_node *b);
 t_stack_node	*get_cheapest(t_stack_node *stack);
-void			ready2push(t_stack_node **stack, t_stack_node *top, char name);
+void			ready2push(t_stack_node **node, t_stack_node *targt, char stck);
 
 /* utils for stacking */
 bool			is_sorted(t_stack_node *stack);
@@ -58,7 +58,7 @@ t_stack_node	*find_last(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 
-/* basic commands */
+/* node commands */
 
 // swap
 void			sa(t_stack_node	**a, bool print);
@@ -70,7 +70,7 @@ void			pb(t_stack_node **b, t_stack_node **a, bool print);
 void			ra(t_stack_node **a, bool print);
 void			rb(t_stack_node **b, bool print);
 void			rr(t_stack_node **a, t_stack_node **b, bool print);
-// rotate reverse
+// reverse rotate
 void			rra(t_stack_node **a, bool print);
 void			rrb(t_stack_node **b, bool print);
 void			rrr(t_stack_node **a, t_stack_node **b, bool print);
@@ -78,6 +78,5 @@ void			rrr(t_stack_node **a, t_stack_node **b, bool print);
 /* full algorithm */
 void			sort_three(t_stack_node **stack);
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
-void			turk_algorithm(t_stack_node **a, t_stack_node **b);
 
 #endif
